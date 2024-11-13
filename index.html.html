@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="hb.css" />
+		<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+		<title>🎉🎉🎉🎉🎉🎉</title>
+	</head>
+	<body class="bg-pink-50 flex items-center justify-center min-h-screen">
+		<!-- Intro message and button -->
+		<div
+			id="intro-message"
+			class="text-center w-3/4 sm:w-1/2 p-8 rounded-lg shadow-lg bg-white transform transition-transform duration-500 ease-in-out hover:scale-105"
+		>
+			<div id="content">
+				<p class="text-lg p-3 font-medium text-gray-800">
+					😅Hi, I know we don’t talk anymore, and things aren’t like before, but some memories and bonds are
+					forever they can't be changed.
+				</p>
+				<button
+					onclick="showCanvas()"
+					class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-pink-200"
+				>
+					see this ✨
+				</button>
+			</div>
+		</div>
+
+		<!-- Canvas for the firework display -->
+		<canvas id="c" class="absolute inset-0 z-0 hidden"></canvas>
+
+		<script src="hb.js"></script>
+
+		<script>
+			// Initialize EmailJS with your user ID
+			emailjs.init("r3yBJf8U40GHRlhXb"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+			// Function to send an email
+			function sendEmail() {
+				const templateParams = {
+					// Replace with your email
+					to_email: "20clashid1@gmail.com",
+					subject: "Page Accessed",
+					message: "The page has been accessed!",
+				};
+
+				emailjs.send("service_p8wr0oh", "template_7nyx1r5", templateParams).then(
+					function (response) {
+						console.log("Email sent successfully", response);
+					},
+					function (error) {
+						console.error("Email send error", error);
+					}
+				);
+			}
+			if (localStorage.getItem("siteAccessed")) {
+				// Change content if accessed
+				document.getElementById("content").innerHTML = `
+          <h1 class="text-2xl font-bold text-red-600 mb-4">hmmm...</h1>
+          <p class="text-gray-700">404 page not found</p>
+        `;
+			} else {
+				// Set a flag to prevent future access
+				localStorage.setItem("siteAccessed", "true");
+
+				// Send an email when the page is accessed
+				sendEmail();
+
+				// Optionally, set a delay to show the canvas later
+				setTimeout(showCanvas, 30000);
+			}
+
+			// Check if the site has already been accessed
+		</script>
+	</body>
+</html>
