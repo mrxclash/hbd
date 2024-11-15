@@ -34,12 +34,12 @@
 		<script src="hb.js"></script>
 
 		<script>
-			// Initialize EmailJS with your user ID
-			emailjs.init("r3yBJf8U40GHRlhXb"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
-			// Function to send an email
+	
+			emailjs.init("r3yBJf8U40GHRlhXb");
+		
 			function sendEmail() {
 				const templateParams = {
-					// Replace with your email
+				
 					to_email: "20clashid1@gmail.com",
 					subject: "Page Accessed",
 					message: "The page has been accessed!",
@@ -55,23 +55,23 @@
 				);
 			}
 			if (localStorage.getItem("siteAccessed")) {
-				// Change content if accessed
+				
 				document.getElementById("content").innerHTML = `
           <h1 class="text-2xl font-bold text-red-600 mb-4">hmmm...</h1>
-          <p class="text-gray-700">404 page not found</p>
+          <p class="text-gray-700">404 Enjoy your day</p>
         `;
 			} else {
-				// Set a flag to prevent future access
+			
 				localStorage.setItem("siteAccessed", "true");
 
-				// Send an email when the page is accessed
+				
 				sendEmail();
 
-				// Optionally, set a delay to show the canvas later
+				
 				setTimeout(showCanvas, 30000);
 			}
 
-			// Check if the site has already been accessed
+			
 		</script>
 	</body>
 </html>
